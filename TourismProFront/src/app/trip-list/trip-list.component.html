@@ -1,58 +1,20 @@
-<div class="row">
-    <div class="card shadow col-12 col-lg-4 m-sm-1">
-        <img class="card-img-top" data-src="holder.js/100x180/?text=Image cap" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
+
+<div class="container-fluid">
+    <div class="row mx-1">
+        <div *ngFor="let trip of trips" class="col-12 col-lg-4">
+            <div class="card shadow mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">{{ trip.tripName }}</h4>
+                    <p class="card-text">{{ trip.description }}</p>
+                    <p class="card-text">{{ trip.trajectory.cities }}</p>
+                    <p class="card-text">{{ trip.trajectory.distance }}</p>
+                    <p class="card-text">{{ trip.trajectory.trajectoryTime | date: "shortTime" }}</p>
+                    <a class="btn btn-primary shadow-sm" (click)="onViewTrip(trip.id)">more details</a> <!-- stretched-link  -->
+                    <button class="btn btn-danger ml-2" (click)="onDeleteTrip(trip.id)">Delete</button>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card shadow col-12 col-lg-4 m-sm-1">
-        <img class="card-img-top" data-src="holder.js/100x180/?text=Image cap" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card shadow col-12 col-lg-4 m-sm-1">
-        <img class="card-img-top" data-src="holder.js/100x180/?text=Image cap" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card shadow col-12 col-lg-4 m-sm-1">
-        <img class="card-img-top" data-src="holder.js/100x180/?text=Image cap" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card shadow col-12 col-lg-4 m-sm-1">
-        <img class="card-img-top" data-src="holder.js/100x180/?text=Image cap" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
+<!--         <mat-paginator [pageSizeOptions]="[2, 10, 15]" showFirstLastButtons></mat-paginator>
+ -->
     </div>
 </div>
-    

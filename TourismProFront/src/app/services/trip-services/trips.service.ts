@@ -18,12 +18,12 @@ export class TripsService {
 
 
 /**
- * Create new trip
+ * Create new trip-services
  * @param trip
  */
 
   createTrip(trip: TripTourist): Observable<TripTourist> {
-    return this.http.post<TripTourist>(`${URL}` + 'new-trip', trip);
+    return this.http.post<TripTourist>(`${URL}` + 'new-trip-services', trip);
   }
 
   /**
@@ -31,38 +31,38 @@ export class TripsService {
    * @param value
    */
   updateTrip(id: number, value: any): Observable<Object> {
-    return this.http.post(`${URL}` + 'update-trip/${id}', value);
+    return this.http.post(`${URL}` + 'update-trip-services/${id}', value);
   }
 /**
- * delete trip
+ * delete trip-services
  * @param id
  */
   deleteTrip(id: number){
-    return this.http.delete(`${URL}` + 'delete-trip/${id}', {responseType: 'text'});
+    return this.http.delete(`${URL}` + 'delete-trip-services/${id}', {responseType: 'text'});
   }
 
 //---------------------------------Trip Guide methods-------------------------------
   /**
-   * Create trip guide
+   * Create trip-services guide
    * @param trip
    * @returns trip guide
    */
   createTripGuide(trip: TripGuide): Observable<TripGuide> {
-    return this.http.post<TripGuide>(`${guideURL}` + 'new-trip', trip);
+    return this.http.post<TripGuide>(`${guideURL}` + 'new-trip-services', trip);
   }
 
   /**
-   * Update trip guide
+   * Update trip-services guide
    * @param id
    * @param value
    * @returns trip guide
    */
   updateTripGuide(id: number, value: any): Observable<Object> {
-    return this.http.post(`${guideURL}` + 'update-trip/${id}', value);
+    return this.http.post(`${guideURL}` + 'update-trip-services/${id}', value);
   }
 
   /**
-   * Deletes trip guide
+   * Deletes trip-services guide
    * @param id
    * @returns trip guide
    */

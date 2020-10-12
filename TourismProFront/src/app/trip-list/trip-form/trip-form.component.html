@@ -1,7 +1,7 @@
 <div class="new-trip container-fluid">
     <h3>Create new trip</h3>
     <div style="width: 400px;">
-        <form (ngSubmit)="onSaveTripg()">
+        <form (ngSubmit)="onSaveTrip()">
             <div class="form-group">
                 <label for="tripName">Trip name</label>
                 <input type="text" id="tripName" name="tripName" class="form-control"
@@ -22,18 +22,8 @@
                 <input type="text" id="distance" name="distance" class="form-control"
                 required [(ngModel)]='trip.trajectory.distance' >
             </div>
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="text" id="price" name="price" class="form-control"
-                required [(ngModel)]='trip.price' >
-            </div>
-            <mat-form-field color="accent" appearance="fill">
-                <mat-label>Trip date</mat-label>
-                <input required [(ngModel)]='trip.trajectory.trajectoryTime' name="trajectoryTime" [matDatepicker]="picker1">
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-              </mat-form-field>
             <button type="submit" class="button btn btn-success">Save</button>
         </form>
     </div>
 </div>
+

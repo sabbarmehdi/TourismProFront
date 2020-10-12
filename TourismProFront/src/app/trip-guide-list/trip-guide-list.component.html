@@ -1,1 +1,23 @@
-<p>trip-guide-list works!</p>
+
+
+<div class="container-fluid">
+    <div class="row mx-1">
+        <div *ngFor="let trip of trips" class="col-12 col-lg-4">
+            <div class="card shadow mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">{{ trip.tripName }}</h4>
+                    <p class="card-text">{{ trip.tripeDate | date: "mediumDate" }}</p>
+                    <p class="card-text">{{ trip.description }}</p>
+                    <p class="card-text">{{ trip.trajectory.cities }}</p>
+                    <p class="card-text">{{ trip.trajectory.distance }}</p>
+                    <p class="card-text">{{ trip.trajectory.trajectoryTime | date: "shortTime"}}</p>
+                    <p class="card-text">{{ trip.price }}</p>
+                    <a class="btn btn-primary shadow-sm" (click)="onViewTrip(trip.id)">more details</a>
+                    <button class="btn btn-danger ml-2" (click)="onDeletTripg(trip.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+<!--         <mat-paginator [pageSizeOptions]="[2, 10, 15]" showFirstLastButtons></mat-paginator>
+ -->
+    </div>
+</div>
