@@ -71,7 +71,7 @@ export class AuthService {
   touristLogin(credentials): Observable<any> {
     return this.login(credentials, TOURIST_API);
   }
-  admintLogin(credentials): Observable<any> {
+  adminLogin(credentials): Observable<any> {
     return this.login(credentials, ADMIN_API);
   }
 

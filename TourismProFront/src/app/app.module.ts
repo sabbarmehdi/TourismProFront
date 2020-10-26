@@ -37,7 +37,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
-import { TokenStorageService } from './services/user-services/token-storage.service';
+import { TokenStorageService } from './services/user-services/jwt-services/token-storage.service';
 
 
 @NgModule({
