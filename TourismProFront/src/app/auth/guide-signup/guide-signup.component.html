@@ -1,0 +1,72 @@
+<div class="content ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+
+                <!-- Login Tab Content -->
+                <div class="account-content">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-7 col-lg-6">
+                            <!-- Register Form -->
+                            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+                                <div class="form-group">
+                                  <label for="firstName"> FirstName</label>
+                                  <input type="text" class="form-control" name="firstName" formControlName="firstName" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="lastName"> lastName</label>
+                                    <input type="text" class="form-control" name="lastName" formControlName="lastName" >
+                                </div>
+                                <div class="form-group">
+                                  <label for="licence">Licence</label>
+                                  <input type="text" name="licence" id="licence" class="form-control" formControlName="licence" >
+                                </div>
+                                <div class="form-group">
+                                  <label for="cin">CIN</label>
+                                  <input type="text" name="cin" id="cin" class="form-control" formControlName="cin" >
+                                </div>
+                                <div class="form-group">
+                                  <label for="owner">Owner</label>
+                                  <input type="text" name="owner" id="owner" class="form-control" formControlName="owner" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="model">Model</label>
+                                    <input type="text" name="model" id="model" class="form-control" formControlName="model" >
+                                </div>
+                                <div class="form-group">
+                                  <label for="seatsNum">Seats number</label>
+                                  <input type="text" name="" id="seatsNum" class="form-control" formControlName="seatsNum" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username"> username</label>
+                                    <input type="text" class="form-control" name="username" formControlName="username" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"> email</label>
+                                    <input type="text" class="form-control" name="email" formControlName="email" >
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="password">password</label>
+                                  <input type="password" class="form-control" name="password" formControlName="password">
+                                </div>
+                                
+                                <div class="text-right">
+                                    <a (click)="goToLogin()">Already have an account?</a>
+                                </div>
+                                <button type="submit" class="btn formControlName btn-primary login-btn"
+                                        [disabled]="userForm.invalid">Signup</button>
+                            </form>
+                            <p class="text-danger">{{ errorMessage }}</p>
+                            <div class="alert alert-success" *ngIf="isSuccessful">
+                                Your registration is successful!
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,9 +2,10 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { EventEmitter } from '@angular/core';
 import { Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Tourist } from 'src/app/models/users/tourist';
 import { User } from '../../models/users/user';
 
-const AUTH_USER = 'http://localhost:8080/api/auth/user';
+const AUTH_USER = 'http://localhost:8080/api/auth/';
 const GUIDE_API = 'http://localhost:8080/api/auth/guide/';
 const TOURIST_API = 'http://localhost:8080/api/auth/';
 const ADMIN_API = 'http://localhost:8080/api/auth/admin/';
@@ -31,30 +32,40 @@ export class AuthService {
     }, httpOptions );
   }
 
-  register(user, api:string): Observable<any>{
-    return this.http.post(api + 'signup', {
+  registerTourist(user: Tourist): Observable<any>{
+    console.log("service: " + user );
+    return this.http.post(TOURIST_API + 'signup', {
       email: user.email,
-      password: user.password,
       username: user.username,
-      lastname: user.lastname,
-      firstname: user.firstname
+      lastName: user.lastName,
+      firstName: user.firstName,
+      password: user.password
     }, httpOptions);
   }
 
-  registerGuide(user, api:string): Observable<any>{
-    return this.http.post(api + 'signup', {
+  registerGuide(user): Observable<any>{
+    console.log("service: " + user );
+    return this.http.post(GUIDE_API + 'signup', {
       email: user.email,
       password: user.password,
       username: user.username,
       lastname: user.lastname,
       firstname: user.firstname,
       cin: user.cin,
-      licence: user.licence
+      licence: user.licence,
+      car:{
+        owner: user.car.owner,
+        model: user.car.model,
+        seatsNum: user.car.seatsNum
+      }
+      
     }, httpOptions);
   }
 
-  registerAdmin(user, api:string): Observable<any>{
-    return this.http.post(api + 'signup', {
+  registerAdmin(user): Observable<any>{
+    console.log("service: " + user );
+    
+    return this.http.post(ADMIN_API + 'signup', {
       email: user.email,
       password: user.password,
       username: user.username,

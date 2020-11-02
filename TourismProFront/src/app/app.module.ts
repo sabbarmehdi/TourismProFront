@@ -10,10 +10,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { HeaderComponent } from './header/header.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthService} from './services/user-services/auth.service';
 import {TripsService} from './services/trip-services/trips.service';
 
@@ -38,6 +36,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TokenStorageService } from './services/user-services/jwt-services/token-storage.service';
+import { TouristSignupComponent } from './auth/tourist-signup/tourist-signup.component';
+import { GuideSignupComponent } from './auth/guide-signup/guide-signup.component';
+import { AdminSignupComponent } from './auth/admin-signup/admin-signup.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AuthInterceptorService } from './services/user-services/jwt-services/auth-interceptor.service';
 
 
 @NgModule({
@@ -47,11 +50,12 @@ import { TokenStorageService } from './services/user-services/jwt-services/token
     SingleTripComponent,
     TripFormComponent,
     HeaderComponent,
-    SignupComponent,
-    SigninComponent,
     TripGuideListComponent,
     SingleTripGuideComponent,
-    FormTripGuideComponent
+    FormTripGuideComponent,
+    TouristSignupComponent,
+    GuideSignupComponent,
+    AdminSignupComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,15 @@ import { TokenStorageService } from './services/user-services/jwt-services/token
     MatDialogModule,
     MatCardModule
   ],
-  providers: [AuthService, TripsService, AuthGuardService, TripGuideService, TripTouristService, TokenStorageService],
+  providers: [AuthService,
+              TripsService,
+              TripGuideService,
+              TripTouristService,
+              TokenStorageService,
+              { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+              {provide: LocationStrategy, useClass: HashLocationStrategy},],
+              
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

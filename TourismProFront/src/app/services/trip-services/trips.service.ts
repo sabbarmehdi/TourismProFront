@@ -23,7 +23,7 @@ export class TripsService {
  */
 
   createTrip(trip: TripTourist): Observable<TripTourist> {
-    return this.http.post<TripTourist>(`${URL}` + 'new-trip-services', trip);
+    return this.http.post<TripTourist>(`${URL}` + 'new-trip', trip);
   }
 
   /**
@@ -31,14 +31,14 @@ export class TripsService {
    * @param value
    */
   updateTrip(id: number, value: any): Observable<Object> {
-    return this.http.post(`${URL}` + 'update-trip-services/${id}', value);
+    return this.http.post(`${URL}` + 'update-trip/${id}', value);
   }
 /**
  * delete trip-services
  * @param id
  */
   deleteTrip(id: number){
-    return this.http.delete(`${URL}` + 'delete-trip-services/${id}', {responseType: 'text'});
+    return this.http.delete(`${URL}` + 'delete-trip/${id}', {responseType: 'text'});
   }
 
 //---------------------------------Trip Guide methods-------------------------------
@@ -48,7 +48,7 @@ export class TripsService {
    * @returns trip guide
    */
   createTripGuide(trip: TripGuide): Observable<TripGuide> {
-    return this.http.post<TripGuide>(`${guideURL}` + 'new-trip-services', trip);
+    return this.http.post<TripGuide>(`${guideURL}` + 'new-trip', trip);
   }
 
   /**
@@ -58,7 +58,7 @@ export class TripsService {
    * @returns trip guide
    */
   updateTripGuide(id: number, value: any): Observable<Object> {
-    return this.http.post(`${guideURL}` + 'update-trip-services/${id}', value);
+    return this.http.post(`${guideURL}` + 'update-trip/${id}', value);
   }
 
   /**
