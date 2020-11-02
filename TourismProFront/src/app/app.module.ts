@@ -16,7 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './services/user-services/auth.service';
 import {TripsService} from './services/trip-services/trips.service';
-import {AuthGuardService} from './services/auth-guard.service';
+
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
