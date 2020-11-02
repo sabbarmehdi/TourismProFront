@@ -1,0 +1,29 @@
+<div class="new-trip container-fluid">
+    <h3>Create new trip</h3>
+    <div style="width: 400px;">
+        <form (ngSubmit)="onSaveTrip()">
+            <div class="form-group">
+                <label for="tripName">Trip name</label>
+                <input type="text" id="tripName" name="tripName" class="form-control"
+                required [(ngModel)]='trip.tripName'  >
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" name="description" class="form-control"
+                required [(ngModel)]='trip.description' >
+            </div>
+            <div class="form-group">
+                <label for="cities">Cities</label>
+                <input class="form-control" name="cities"
+                required [(ngModel)]='trip.trajectory.cities' >
+            </div>
+             <div class="form-group">
+                <label for="distance">Distance length</label>
+                <input type="text" id="distance" name="distance" class="form-control"
+                required [(ngModel)]='trip.trajectory.distance' >
+            </div>
+            <button type="submit" class="button btn btn-success">Save</button>
+        </form>
+    </div>
+</div>
+
