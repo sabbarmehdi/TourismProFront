@@ -9,7 +9,7 @@ const URL = "http://localhost:8080/trip-guide/list"
   providedIn: 'root'
 })
 export class TripGuideService {
-
+  
   constructor(private http: HttpClient) { }
 
  /**
@@ -25,7 +25,11 @@ getOneTrip(id:number): Observable <any> {
   * Get trips
   * @returns trips
   */
- getTrips(): Observable<TripGuide[]> {
-    return this.http.get<TripGuide[]>(`${URL}/all-trips`)
+ getTrips(id): Observable<TripGuide[]> {
+    return this.http.get<TripGuide[]>(`${URL}/user/` + id);
+  }
+
+  getAllTrips() : Observable<TripGuide[]>{
+    return this.http.get<TripGuide[]>(`${URL}/all-trips`);
   }
 }

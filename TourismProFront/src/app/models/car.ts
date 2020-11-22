@@ -1,14 +1,13 @@
 export class Car {
-    registrationNum = String;
+    registrationNum : String;
     model: String;
     owner: String;
     seatsNum: Number;
-   
-
-	constructor(model: String, owner: String, seatsNum: Number) {
-        model = this.model;
-        owner = this.owner;
-        seatsNum = this.seatsNum;
+	constructor(model: String, owner: String, seatsNum: Number, registrationNum : String) {
+    this.model = model;
+    this.owner = owner;
+    this.seatsNum = seatsNum;
+    this.registrationNum = registrationNum;
 	}
-    
+
 }

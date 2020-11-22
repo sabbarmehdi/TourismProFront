@@ -36,11 +36,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TokenStorageService } from './services/user-services/jwt-services/token-storage.service';
-import { TouristSignupComponent } from './auth/tourist-signup/tourist-signup.component';
 import { GuideSignupComponent } from './auth/guide-signup/guide-signup.component';
 import { AdminSignupComponent } from './auth/admin-signup/admin-signup.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AuthInterceptorService } from './services/user-services/jwt-services/auth-interceptor.service';
+import {GuideLoginComponent} from './auth/guide-login/guide-login.component';
+import {AdminLoginComponent} from './auth/admin-login/admin-login.component';
+import { TouristLoginComponent } from './auth/tourist-login/tourist-login.component';
+import {TouristSignupComponent} from './auth/tourist-signup/tourist-signup.component';
+import { TouristService } from './services/user-services/tourist.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -55,7 +60,12 @@ import { AuthInterceptorService } from './services/user-services/jwt-services/au
     FormTripGuideComponent,
     TouristSignupComponent,
     GuideSignupComponent,
-    AdminSignupComponent
+    TouristLoginComponent,
+    AdminSignupComponent,
+    GuideLoginComponent,
+    AdminLoginComponent,
+    TouristLoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -92,8 +102,9 @@ import { AuthInterceptorService } from './services/user-services/jwt-services/au
               TripTouristService,
               TokenStorageService,
               { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
-              {provide: LocationStrategy, useClass: HashLocationStrategy},],
-              
+              {provide: LocationStrategy, useClass: HashLocationStrategy},
+              TouristService],
+
 
   bootstrap: [AppComponent]
 })

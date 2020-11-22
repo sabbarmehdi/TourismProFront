@@ -4,8 +4,9 @@ import { Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Tourist } from 'src/app/models/users/tourist';
 import { User } from '../../models/users/user';
+import { TokenStorageService } from './jwt-services/token-storage.service';
 
-const AUTH_USER = 'http://localhost:8080/api/auth/';
+const AUTH_USER = 'http://localhost:8080/api/one-user/';
 const GUIDE_API = 'http://localhost:8080/api/auth/guide/';
 const TOURIST_API = 'http://localhost:8080/api/auth/';
 const ADMIN_API = 'http://localhost:8080/api/auth/admin/';
@@ -23,17 +24,19 @@ export class AuthService {
 
   @Output() getLoggedInUser: EventEmitter<User> = new EventEmitter;
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient,
+                private tokenService: TokenStorageService ) { }
 
   login(credentials, api:string): Observable<User>{
+    console.log(JSON.stringify(credentials));
     return this.http.post<User>(api + 'signin', {
-      email: credentials.email,
+      username: credentials.username,
       password: credentials.password
     }, httpOptions );
   }
 
-  registerTourist(user: Tourist): Observable<any>{
-    console.log("service: " + user );
+  registerTourist(user): Observable<any>{
+   // console.log("service: " + user.password );
     return this.http.post(TOURIST_API + 'signup', {
       email: user.email,
       username: user.username,
@@ -49,22 +52,23 @@ export class AuthService {
       email: user.email,
       password: user.password,
       username: user.username,
-      lastname: user.lastname,
-      firstname: user.firstname,
+      lastName: user.lastName,
+      firstName: user.firstName,
       cin: user.cin,
-      licence: user.licence,
+      license: user.license,
       car:{
         owner: user.car.owner,
         model: user.car.model,
-        seatsNum: user.car.seatsNum
+        seatsNum: user.car.seatsNum,
+        registrationNum: user.car.registrationNum
       }
-      
+
     }, httpOptions);
   }
 
   registerAdmin(user): Observable<any>{
-    console.log("service: " + user );
-    
+    console.log("service: " + JSON.stringify(user) );
+
     return this.http.post(ADMIN_API + 'signup', {
       email: user.email,
       password: user.password,
@@ -87,6 +91,14 @@ export class AuthService {
   }
 
   getCurrentUser():Observable<User>{
-    return this.http.get<User>(AUTH_USER);
+    const user = this.tokenService.getUser();
+    return this.http.get<User>(AUTH_USER + user.id);
+  }
+
+  isLoggedIn(){
+    if(this.tokenService.getToken()){
+      return true;
+    }
+    return false;
   }
 }

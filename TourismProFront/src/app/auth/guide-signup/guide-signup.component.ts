@@ -19,10 +19,11 @@ export class GuideSignupComponent implements OnInit {
       email:new FormControl(),
       password: new FormControl(),
       cin: new FormControl(),
-      licence: new FormControl(),
+      license: new FormControl(),
       owner: new FormControl(),
       model: new FormControl(),
-      seatsNum: new FormControl()
+      seatsNum: new FormControl(),
+      registrationNum: new FormControl()
   });
   isSuccessful = false;
   isSignUpFailed = false;
@@ -33,7 +34,7 @@ export class GuideSignupComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.initForm();    
+    this.initForm();
   }
 
   initForm(){
@@ -44,36 +45,42 @@ export class GuideSignupComponent implements OnInit {
       email:[null, [Validators.required, Validators.email]],
       password:[null, [Validators.required, Validators.pattern]],
       cin: [null, [Validators.required]],
-      licence: [null, [Validators.required]],
+      license: [null, [Validators.required]],
       owner: [null, [Validators.required]],
       model: [null, [Validators.required]],
-      seatsNum: [null, [Validators.required]]
+      seatsNum: [null, [Validators.required]],
+      registrationNum: [null, [Validators.required]]
     });
   }
-  
-  onSubmit():void{    
+
+  onSubmit():void{
     const firstName = this.userForm.get('firstName').value;
     const lastName = this.userForm.get('lastName').value;
     const username = this.userForm.get('username').value;
     const email = this.userForm.get('email').value;
     const password = this.userForm.get('password').value;
     const cin = this.userForm.get('cin').value;
-    const licence = this.userForm.get("licence").value;
+    const license = this.userForm.get("license").value;
 
     const owner = this.userForm.get("owner").value;
     const model = this.userForm.get("model").value;
     const seatsNum = this.userForm.get("seatsNum").value;
+    const registrationNum = this.userForm.get("registrationNum").value;
 
-    const newCar = new Car(owner, model,seatsNum);
+    console.log(JSON.stringify(owner));
+    console.log(JSON.stringify(model));
+    console.log(JSON.stringify(seatsNum));
 
-    const newUser = new TourGuide(firstName,lastName, username, email, password, cin, licence, newCar);
+    const newCar = new Car( model, owner, seatsNum, registrationNum);
+    console.log(JSON.stringify(newCar));
+    const newUser = new TourGuide(firstName,lastName, username, email, password, cin, license, newCar);
 
-    
+
     this.authService.registerGuide(newUser).subscribe(
       newUser => {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        console.log(newUser);
+        console.log(JSON.stringify(newUser));
         this.router.navigate(["guide/login"]);
       },
       (error) => {
@@ -81,12 +88,12 @@ export class GuideSignupComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
-    console.log("second" + newUser);
+    console.log("second" + JSON.stringify(newUser));
   }
 
   goToLogin(){
     this.router.navigate(['/guide/login']);
   }
-  
+
 
 }

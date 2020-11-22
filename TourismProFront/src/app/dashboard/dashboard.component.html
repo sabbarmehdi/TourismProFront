@@ -10,8 +10,7 @@
                         <p class="card-text">{{ trip.trajectory.distance }}</p> -->
                     <p class="card-subtitle">{{ trip.trajectory.cities }}</p>
                     <p class="card-text">{{ trip.trajectory.trajectoryTime | date: "shortTime" }}</p>
-                    <a class="btn btn-primary shadow-sm" (click)="onViewTrip(trip.id)">more details</a> <!-- stretched-link  -->
-                    <button class="btn btn-danger ml-2" (click)="onDeletTripg(trip.id)">Delete</button>
+                    <a class="btn btn-primary shadow-sm" (click)="onViewTrip(trip.id)">more details</a> 
                 </div>
             </div>
         </div>

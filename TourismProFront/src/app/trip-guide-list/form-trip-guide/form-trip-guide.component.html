@@ -27,7 +27,7 @@
                 <input type="text" id="price" name="price" class="form-control"
                 required [(ngModel)]='trip.price' >
             </div>
-            <mat-form-field color="accent"  appearance="fill">
+            <mat-form-field color="accent"  appearance="fill" MatFormFieldControl>
                 <mat-label>Trip date</mat-label>
                 <input required [(ngModel)]='trip.trajectory.trajectoryTime' name="trajectoryTime" [matDatepicker]="picker1">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>

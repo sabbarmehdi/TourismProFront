@@ -27,7 +27,7 @@ export class TouristSignupComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.initForm();    
+    this.initForm();
   }
 
   initForm(){
@@ -39,8 +39,8 @@ export class TouristSignupComponent implements OnInit {
       password:['', Validators.required]
     });
   }
-  
-  onSubmit():void{    
+
+  onSubmit():void{
     const firstName = this.userForm.get('firstName').value;
     const lastName = this.userForm.get('lastName').value;
     const username = this.userForm.get('username').value;
@@ -49,12 +49,12 @@ export class TouristSignupComponent implements OnInit {
 
     const newUser = new Tourist(firstName,lastName, username, email, password);
 
-    
+
     this.authService.registerTourist(newUser).subscribe(
       newUser => {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        console.log(newUser);
+        console.log(JSON.stringify(newUser));
         this.router.navigate(["user/login"]);
       },
       (error) => {
@@ -62,27 +62,12 @@ export class TouristSignupComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
-    
-    
 
-    /* this.authService.registerTourist(this.form).subscribe(
-      data => {
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-
-        //TODO: Check this Path!!!
-        this.router.navigate(["user/login"]);
-      },
-      error => {
-        this.errorMessage = error.error.message;
-        this.isSignUpFailed = true;
-      }
-    ); */
   }
 
   goToLogin(){
     this.router.navigate(['/user/login']);
   }
-  
+
 
 }

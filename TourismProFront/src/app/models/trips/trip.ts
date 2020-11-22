@@ -1,3 +1,4 @@
+import { User } from '../users/user';
 import { Trajectory } from './trajectory';
 
 export abstract class Trip {
@@ -5,6 +6,7 @@ export abstract class Trip {
     tripName: String;
     description: String;
     trajectory: Trajectory;
+    clientId: String;
 
     /* constructor(tripName: String, description: String, trajectory: Trajectory){
         this.tripName = tripName;
