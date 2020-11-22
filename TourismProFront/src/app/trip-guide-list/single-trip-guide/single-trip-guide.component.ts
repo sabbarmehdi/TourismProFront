@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TripGuide } from 'src/app/models/trips/trip-guide';
 import { TripGuideService } from 'src/app/services/trip-services/trip-guide.service';
+import { TripsService } from 'src/app/services/trip-services/trips.service';
 
 @Component({
   selector: 'app-single-trip-guide',
@@ -14,11 +15,13 @@ export class SingleTripGuideComponent implements OnInit {
   trip: TripGuide;
 
   constructor(private tripgService: TripGuideService,
-              private route: ActivatedRoute) { }
+              private tripService: TripsService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.trip = new TripGuide();
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.trip.id;
 
     this.tripgService.getOneTrip(this.id).subscribe(
       tripData => {
@@ -28,4 +31,12 @@ export class SingleTripGuideComponent implements OnInit {
       error => console.log(error));
   }
 
+  onDeletTripg(id: number){
+    this.tripService.deleteTripGuide(id).subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['/trips/guide']);
+      },
+      error => console.log(error));
+  }
 }

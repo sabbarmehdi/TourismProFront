@@ -37,8 +37,8 @@ export class TripsService {
  * delete trip-services
  * @param id
  */
-  deleteTrip(id: number){
-    return this.http.delete(`${URL}` + 'delete-trip/${id}', {responseType: 'text'});
+  deleteTrip(id: number): Observable<any> {
+    return this.http.delete(`${URL}delete-trip/${id}`, {responseType: 'text'});
   }
 
 //---------------------------------Trip Guide methods-------------------------------

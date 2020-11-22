@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Admin } from '../models/users/admin';
+import { User } from '../models/users/user';
+import { AuthService } from '../services/user-services/auth.service';
+import { TokenStorageService } from '../services/user-services/jwt-services/token-storage.service';
 
+const ADMIN = "ADMIN";
+const TOURIST = "TOURIST";
+const TOURGUIDE = "TOURGUIDE"
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,9 +15,74 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  roles: string[];
+  isLoggedIn = false;
 
-  ngOnInit(): void {
+  showTouristMenu = false;
+  showGuideMenu = false;
+  showAdminMenu = false;
+  username: String;
+  loggedInUser: any;
+
+  constructor(private tokenStorage: TokenStorageService,
+              private authService: AuthService,
+              private router: Router) { }
+
+  ngOnInit() {
+   
+
+     this.isLoggedIn = !!this.authService.isLoggedIn();
+     //this.isLoggedIn = !!this.tokenStorage.getToken();
+
+    this.authService.getLoggedInUser.subscribe(
+      (user: User)=> {
+        this.onUpdateHeader(user)
+        this.userMenu(user);
+      });
+    
+      if(this.isLoggedIn){
+        const user = this.tokenStorage.getUser();
+        const userType = this.tokenStorage.getUserType();
+        this.roles = user.roles;
+              //console.log( "userType Test" + userType.valueOf);
+        this.userMenu(user);
+      }
+  }
+
+  userMenu(user){
+    switch(user.userType){
+      case "TOURIST":
+        this.showTouristMenu = true;
+        break;
+      case "TOURGUIDE":
+        this.showGuideMenu = true;
+        break;
+      case "ADMIN":
+        this.showAdminMenu = true;
+        break;
+      default:
+        console.log("userType did't setted correctly!!"); 
+    }
+  }
+  logout(){
+    this.isLoggedIn = false;
+    this.showAdminMenu = false;
+    this.showGuideMenu = false;
+    this.showTouristMenu = false;
+    this.tokenStorage.signOut();
+    this.router.navigate(["dashboard"]);
+    
+  }
+  onUpdateHeader(user: User) {
+    this.isLoggedIn = true;
+    this.loggedInUser = user;
+    console.log("logged in user : " + JSON.stringify(user));
+    this.userMenu(user);
+    /*this.showAdminMenu = user.userType == ADMIN;
+    this.showGuideMenu = user.userType == TOURGUIDE;
+    this.showTouristMenu = user.userType == TOURIST;*/
+    console.log("tourist Test:" + this.showTouristMenu);
+    
   }
 
 }

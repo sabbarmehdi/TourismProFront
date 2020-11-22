@@ -12,9 +12,15 @@ import { TripGuideListComponent } from './trip-guide-list/trip-guide-list.compon
 import { SingleTripComponent } from './trip-list/single-trip/single-trip.component';
 import { TripFormComponent } from './trip-list/trip-form/trip-form.component';
 import { TripListComponent } from './trip-list/trip-list.component';
+import {TouristAuthGuard} from './services/user-services/auth-guard/tourist-auth.guard';
+import {GuideAuthGuard} from './services/user-services/auth-guard/guide-auth.guard';
+import { AdminAuthGuard } from './services/user-services/auth-guard/admin-auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
+  { path:  '', pathMatch: 'full', redirectTo: 'dashboard' },
+
   { path: 'user/login',component: TouristLoginComponent },
   { path: 'guide/login',component: GuideLoginComponent },
   { path: 'admin/login',component: AdminLoginComponent },
@@ -22,14 +28,14 @@ const routes: Routes = [
   { path: 'guide/signup',component: GuideSignupComponent },
   { path: 'admin/signup',component: AdminSignupComponent },
 
-  { path: 'trips', component: TripListComponent},
-  { path: 'new', component: TripFormComponent},
-  { path: 'trips/view/:id', component: SingleTripComponent},
+  { path: 'trips', component: TripListComponent, canActivate: [TouristAuthGuard, TouristAuthGuard, AdminAuthGuard]},
+  { path: 'new', component: TripFormComponent, canActivate: [TouristAuthGuard]},
+  { path: 'trips/view/:id', component: SingleTripComponent, canActivate: [TouristAuthGuard]},
   { path: 'trips/guide', component: TripGuideListComponent},
-  { path: 'new/g', component: FormTripGuideComponent},
+  { path: 'new/g', component: FormTripGuideComponent, canActivate: [GuideAuthGuard]},
   { path: 'tripg/view/:id', component: SingleTripGuideComponent},
+  { path: 'dashboard', component: DashboardComponent}
 
-  
 ];
 
 @NgModule({

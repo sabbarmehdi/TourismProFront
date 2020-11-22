@@ -8,15 +8,17 @@ const USER_TYPE = 'user-type';
 @Injectable({
   providedIn: 'root'
 })
-export class TokenStorageService {
+export class  TokenStorageService {
 
   constructor() {}
 
   signOut(){
     localStorage.clear();
+    localStorage.removeItem(TOKEN_KRY);
+    localStorage.removeItem(USER_KEY);
   }
 
-  public saveToken(token: string){
+  public saveToken(token: string): void {
     localStorage.removeItem(TOKEN_KRY);
     localStorage.setItem(TOKEN_KRY, token);
   }
@@ -34,7 +36,7 @@ export class TokenStorageService {
     return localStorage.getItem(USER_TYPE);
   }
 
-  public saveUser(user: User){
+  public saveUser(user: User): void {
     localStorage.removeItem(USER_KEY);
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }

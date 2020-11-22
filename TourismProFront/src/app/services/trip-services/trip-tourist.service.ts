@@ -24,8 +24,8 @@ export class TripTouristService {
  * Gets trips
  * @returns trips
  */
-  getTrips() :Observable<TripTourist[]> {
+  getTrips(id) :Observable<TripTourist[]> {
 
-    return this.http.get<TripTourist[]>(`${URL}/all-trips`);
+    return this.http.get<TripTourist[]>(`${URL}/user/` + id);
   }
 }
