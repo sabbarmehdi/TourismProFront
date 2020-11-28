@@ -46,6 +46,7 @@ import { TouristLoginComponent } from './auth/tourist-login/tourist-login.compon
 import {TouristSignupComponent} from './auth/tourist-signup/tourist-signup.component';
 import { TouristService } from './services/user-services/tourist.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     GuideLoginComponent,
     AdminLoginComponent,
     TouristLoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,

@@ -1,36 +1,46 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <a class="navbar-brand" href="#">TourismPro</a>
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+    <!-- <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li routerLinkActive= "active">
-                <a class="nav-link" routerLink="dashboard">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="dashboard">Home |<span class="sr-only">(current)</span></a>
+            </li>
+                            <!-- Guide Nav -->
+            <li routerLinkActive="active" *ngIf="showGuideMenu" >
+                <a class="nav-link" routerLink="new/g">New Trip |</a>
             </li>
             <li routerLinkActive="active" *ngIf="showGuideMenu" >
-                <a class="nav-link" routerLink="new/g">New Trip</a>
+                <a class="nav-link" routerLink="trips/guide">My Trips |</a>
             </li>
-            <li routerLinkActive="active" *ngIf="showGuideMenu" >
-                <a class="nav-link" routerLink="trips/guide">MyTrips</a>
+                        <!-- Tourist nav -->
+            <li routerLinkActive="active" *ngIf="showTouristMenu" >
+                <a class="nav-link" routerLink="trips">My Trips |</a>
             </li>
             <li routerLinkActive="active" *ngIf="showTouristMenu" >
-                <a class="nav-link" routerLink="trips">My Trips</a>
+                <a class="nav-link" routerLink="new">Add Trip |</a>
             </li>
-            <li routerLinkActive="active" *ngIf="showTouristMenu" >
-                <a class="nav-link" routerLink="new">Add Trip</a>
-            </li>
+                            <!-- admin nav -->
             <li routerLinkActive="active" *ngIf="showAdminMenu" >
-                <a class="nav-link" routerLink="admin/dashboard">Admin Dashboard</a>
+                <a class="nav-link" routerLink="admin/dashboard">Admin Dashboard |</a>
+            </li>
+            <li routerLinkActive="active"  >
+                <a class="nav-link" routerLink="#">About us</a>
             </li>
         </ul>
         <ul class="navbar-nav justify-content-end">    
-            <li class="nav-item" routerLinkActive="active"  *ngIf="!isLoggedIn">
-                <a class="nav-link" routerLink="user/signup">Signup</a>
+            <li class="nav-item" id="signin" routerLinkActive="active" class="justify-content-end"  *ngIf="!isLoggedIn">
+                <a class="nav-link"  routerLink="user/login">Sign in</a>
             </li>
-            <li class="nav-item" routerLinkActive="active" class="justify-content-end"  *ngIf="!isLoggedIn">
-                <a class="nav-link" routerLink="user/login">Signin</a>
+            <li class="nav-item" id="signup" routerLinkActive="active"  *ngIf="!isLoggedIn">
+                <a class="nav-link" id="signuptext" routerLink="user/signup">Sign up</a>
             </li>
             <li class="nav-item"  *ngIf="isLoggedIn">
                 <a class="nav-link" (click)="logout()">logout</a>
