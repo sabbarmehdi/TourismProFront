@@ -12,14 +12,22 @@ import { AuthService } from 'src/app/services/user-services/auth.service';
 })
 export class GuideSignupComponent implements OnInit {
 
+    firstName : string;
+    lastName: string;
+    username: string;
+    email: string;
+    password: string;
+    cin: string;
+    license: string;
   userForm = new FormGroup({
-    firstName: new FormControl(),
+      firstName: new FormControl(),
       lastName: new FormControl(),
       username: new FormControl(),
-      email:new FormControl(),
       password: new FormControl(),
       cin: new FormControl(),
-      license: new FormControl(),
+      license: new FormControl()
+    });
+  carForm = new FormGroup({
       owner: new FormControl(),
       model: new FormControl(),
       seatsNum: new FormControl(),
@@ -28,6 +36,7 @@ export class GuideSignupComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  suiventStatus = false;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
@@ -41,11 +50,12 @@ export class GuideSignupComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       firstName:[null, [Validators.required]],
       lastName:[null, [Validators.required]],
-      username:[null, [Validators.required]],
-      email:[null, [Validators.required, Validators.email]],
+      username:[null, [Validators.required, Validators.email]],
       password:[null, [Validators.required, Validators.pattern]],
       cin: [null, [Validators.required]],
-      license: [null, [Validators.required]],
+      license: [null, [Validators.required]]
+    });
+    this.carForm = this.formBuilder.group({
       owner: [null, [Validators.required]],
       model: [null, [Validators.required]],
       seatsNum: [null, [Validators.required]],
@@ -53,27 +63,29 @@ export class GuideSignupComponent implements OnInit {
     });
   }
 
+  onSuivent():void{
+    this.firstName = this.userForm.get('firstName').value;
+    this.lastName = this.userForm.get('lastName').value;
+    this.username = this.userForm.get('username').value;
+    this.password = this.userForm.get('password').value;
+    this.cin = this.userForm.get('cin').value;
+    this.license = this.userForm.get("license").value;
+    this.suiventStatus = true; 
+  }
+  
   onSubmit():void{
-    const firstName = this.userForm.get('firstName').value;
-    const lastName = this.userForm.get('lastName').value;
-    const username = this.userForm.get('username').value;
-    const email = this.userForm.get('email').value;
-    const password = this.userForm.get('password').value;
-    const cin = this.userForm.get('cin').value;
-    const license = this.userForm.get("license").value;
-
     const owner = this.userForm.get("owner").value;
     const model = this.userForm.get("model").value;
     const seatsNum = this.userForm.get("seatsNum").value;
     const registrationNum = this.userForm.get("registrationNum").value;
 
-    console.log(JSON.stringify(owner));
+   /*  console.log(JSON.stringify(owner));
     console.log(JSON.stringify(model));
-    console.log(JSON.stringify(seatsNum));
+    console.log(JSON.stringify(seatsNum)); */
 
     const newCar = new Car( model, owner, seatsNum, registrationNum);
     console.log(JSON.stringify(newCar));
-    const newUser = new TourGuide(firstName,lastName, username, email, password, cin, license, newCar);
+    const newUser = new TourGuide(this.firstName,this.lastName, this.username, this.password, this.cin, this.license, newCar);
 
 
     this.authService.registerGuide(newUser).subscribe(

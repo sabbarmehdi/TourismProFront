@@ -1,3 +1,38 @@
-.forgot-link{
+a{
     color: #0275d8;
+}
+
+input {
+    background-color: #E6E6E6;
+}
+
+.btn {
+    width: 100%;
+    align-self: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+#sideimage{
+    background: #FFB75F;
+    height: 700px;
+}
+#sign-form{
+    align-self: center;
+    margin-top: 100px;
+}
+
+#sideimage h1 {
+    /* Discover all Morocco: */
+font-size: 46px;
+color: #7F531E;
+width: 50%;
+align-self: center;
+}
+
+#sign-form h1 {
+    padding: 0% 0% 5% 15%;
+    font-size: 30px;
 }

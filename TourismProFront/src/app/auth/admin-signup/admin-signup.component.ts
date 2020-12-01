@@ -16,7 +16,6 @@ export class AdminSignupComponent implements OnInit {
     firstName: new FormControl(),
     lastName: new FormControl(),
     username: new FormControl(),
-    email:new FormControl(),
     password: new FormControl()
   });
 
@@ -36,8 +35,7 @@ export class AdminSignupComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       firstName:[null, [Validators.required]],
       lastName:[null, [Validators.required]],
-      username:[null, [Validators.required]],
-      email:[null, [Validators.required, Validators.email]],
+      username:[null, [Validators.required, Validators.email]],
       password:[null, Validators.required, Validators.pattern]
     });
   }
@@ -46,10 +44,9 @@ export class AdminSignupComponent implements OnInit {
     const firstName = this.userForm.get('firstName').value;
     const lastName = this.userForm.get('lastName').value;
     const username = this.userForm.get('username').value;
-    const email = this.userForm.get('email').value;
     const password = this.userForm.get('password').value;
     const status = false;
-    const newAdmin = new Admin(firstName,lastName, username, email, password, status);
+    const newAdmin = new Admin(firstName,lastName, username, password, status);
 
 
     this.authService.registerAdmin(newAdmin).subscribe(

@@ -1,0 +1,57 @@
+a{
+    color: #0275d8;
+}
+
+input {
+    background-color: #E6E6E6;
+}
+
+.btn {
+    width: 100%;
+    align-self: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+#sideimage{
+    background: #8CC546;
+    height: 700px;
+}
+#sign-form{
+    align-self: center;
+    margin-top: 100px;
+}
+
+#sideimage h1 {
+    /* Discover all Morocco: */
+font-size: 46px;
+color: #4f7027;
+width: 50%;
+align-self: center;
+}
+
+#sign-form h1 {
+    padding: 0% 0% 5% 15%;
+    font-size: 30px;
+}
+
+#btn-car{
+    margin-right: 5em;
+}
+.btn{
+    background-color: #FFB75F;
+	border: 0;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: rgb(29, 28, 28);
+	font-size: 14px;
+	padding: 6px 10px;
+	bottom: 16px;
+	right: 30px;
+	letter-spacing: 1px;
+	width: 30%;
+    float: right;
+  
+}

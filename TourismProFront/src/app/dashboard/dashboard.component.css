@@ -1,3 +1,80 @@
-imagecarousel{
-    width: 500px;
+
+.trip {
+	background-color: #fff;
+    border-radius: 10px;
+    border: 30px;
+    border-color: #157bbf;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+    border: 1px #dfdfdf double;
+
+}
+
+.trip h6 {
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: medium;
+}
+
+.trip h1 {
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.trip-preview {
+	background-color: #9894d4;
+	max-width: 300px;
+}
+
+.trip-preview img {
+    max-width: 100%;
+}
+.trip-info {
+	padding: 10px 30px;
+	position: relative;
+	width: 100%;
+}
+
+
+.butn {
+	background-color: #157bbf;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 14px;
+	padding: 6px 18px;
+	position: absolute;
+	bottom: 16px;
+	right: 30px;
+	letter-spacing: 1px;
+}
+
+.search {
+	height: max-content;
+	padding: 20px;
+}
+.btn {
+	background-color: #FFB75F;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 14px;
+	padding: 6px 10px;
+	bottom: 16px;
+	right: 30px;
+	letter-spacing: 1px;
+	width: 30%;
+	align-self: flex-end;
+}
+
+label {
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	font-weight: bold;
 }

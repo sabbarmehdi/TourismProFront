@@ -1,20 +1,58 @@
-   
-<div class="container-fluid">
+
+<!-- <div class="container-fluid">
     <div class="row mx-1">
-        <div *ngFor="let trip of trips" class="col-12 col-lg-4">
-            <div class="card shadow mt-4">
-                <img class="card-img-top" src="https://cdn.checkfront.com/wp-content/uploads/2019/03/tour-guide-training-hiring.jpg" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">{{ trip.tripName }}</h4>
-                    <!-- <p class="card-text">{{ trip.description }}</p>
-                        <p class="card-text">{{ trip.trajectory.distance }}</p> -->
-                    <p class="card-subtitle">{{ trip.trajectory.cities }}</p>
-                    <p class="card-text">{{ trip.trajectory.trajectoryTime | date: "shortTime" }}</p>
+        <div *ngFor="let trip of trips" class="col-12 col-md-8">
+            <div class="trip shadow mt-4">
+                <div id="image">
+                    <img class="img-fluid" src="https://cdn.checkfront.com/wp-content/uploads/2019/03/tour-guide-training-hiring.jpg" alt="">
+                </div>
+                <div id="cardbody">
+                    <h4 >{{ trip.tripName }}</h4>
+                    <p class="card-text">{{ trip.description }}</p>
+                        <p class="card-text">{{ trip.trajectory.distance }}</p>
+                    <p >{{ trip.trajectory.cities }}</p>
+                    <p >{{ trip.trajectory.trajectoryTime | date: "shortTime" }}</p>
                     <a class="btn btn-primary shadow-sm" (click)="onViewTrip(trip.id)">more details</a> 
                 </div>
             </div>
         </div>
-<!--         <mat-paginator [pageSizeOptions]="[2, 10, 15]" showFirstLastButtons></mat-paginator>
- -->
+        <mat-paginator [pageSizeOptions]="[2, 10, 15]" showFirstLastButtons></mat-paginator>
+
     </div>
+</div> -->
+<app-carousel></app-carousel>
+<div class="container">
+<div class="row mt-4">
+    <div class="col-12 col-md-8">
+        <div class="trip" *ngFor="let trip of trips">
+            <div class="trip-preview">
+                <img class="card-img-top" src="https://cdn.checkfront.com/wp-content/uploads/2019/03/tour-guide-training-hiring.jpg" alt="">
+                <!-- <h6>Course</h6>
+                <h2>JavaScript Fundamentals</h2>
+                <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a> -->
+            </div>
+            <div class="trip-info">
+                <h1>{{ trip.tripName }}</h1>
+                <h6>{{ trip.description }}</h6>
+                <p >{{ trip.trajectory.trajectoryTime | date: "shortTime" }}</p>
+                <button class="butn" (click)="onViewTrip(trip.id)">Details</button>
+            </div>
+        </div>
+    </div>
+            <!-- Search form -->
+    <div class="col-12 col-md-4 ">
+        <div class="search pt-3 mt-3 shadow card">
+            <div class="form-group">
+            <label for="start-city">Start city</label>
+            <input type="text"
+                class="form-control" name="start-city" id="start-city" placeholder="Agadir, Marrakech,...">
+            </div>
+            <div class="form-group">
+            <label for="max-price">Max price (en DH)</label>
+            <input type="text" name="max-price" id="max-price" class="form-control" placeholder="200, 300,...">
+            </div>
+            <button type="submit" class="button btn">Search</button>
+        </div>
+    </div>
+</div>
 </div>

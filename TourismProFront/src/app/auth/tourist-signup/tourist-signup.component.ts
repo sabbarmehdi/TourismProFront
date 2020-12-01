@@ -12,10 +12,9 @@ import { AuthService } from 'src/app/services/user-services/auth.service';
 export class TouristSignupComponent implements OnInit {
 
    userForm = new FormGroup({
-    firstName: new FormControl(),
+      firstName: new FormControl(),
       lastName: new FormControl(),
       username: new FormControl(),
-      email:new FormControl(),
       password: new FormControl()
   });
   isSuccessful = false;
@@ -34,8 +33,7 @@ export class TouristSignupComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       firstName:[null, [Validators.required]],
       lastName:[null, [Validators.required]],
-      username:[null, [Validators.required]],
-      email:[null, [Validators.required, Validators.email]],
+      username:[null, [Validators.required, Validators.email]],
       password:['', Validators.required]
     });
   }
@@ -44,10 +42,9 @@ export class TouristSignupComponent implements OnInit {
     const firstName = this.userForm.get('firstName').value;
     const lastName = this.userForm.get('lastName').value;
     const username = this.userForm.get('username').value;
-    const email = this.userForm.get('email').value;
     const password = this.userForm.get('password').value;
 
-    const newUser = new Tourist(firstName,lastName, username, email, password);
+    const newUser = new Tourist(firstName,lastName, username, password);
 
 
     this.authService.registerTourist(newUser).subscribe(

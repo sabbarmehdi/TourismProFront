@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  images = ["https://images.ctfassets.net/zfxytrk6nf7m/6lOKXwrrZmEGa2EI48OMqc/454f14824ef8dbcf8e77a8cefb2a58b2/illu.jpg?w=1280&h=560&q=90&fl=progressive&fit=fill",
+            "https://images.ctfassets.net/zfxytrk6nf7m/6lOKXwrrZmEGa2EI48OMqc/454f14824ef8dbcf8e77a8cefb2a58b2/illu.jpg?w=1280&h=560&q=90&fl=progressive&fit=fill",
+            "https://images.ctfassets.net/zfxytrk6nf7m/6lOKXwrrZmEGa2EI48OMqc/454f14824ef8dbcf8e77a8cefb2a58b2/illu.jpg?w=1280&h=560&q=90&fl=progressive&fit=fill"
+            ]
+  /* .map((n) => `https://picsum.photos/id/${n}/900/500`); */
 
   constructor() { }
 

@@ -47,6 +47,7 @@ import {TouristSignupComponent} from './auth/tourist-signup/tourist-signup.compo
 import { TouristService } from './services/user-services/tourist.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -96,8 +97,9 @@ import { CarouselComponent } from './carousel/carousel.component';
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
-    MatCardModule
-  ],
+    MatCardModule,
+    NgbModule
+    ],
   providers: [AuthService,
               TripsService,
               TripGuideService,

@@ -1,13 +1,107 @@
-<div class="content ">
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="d-none d-md-block col-md-5" id="sideimage">
+          <!-- image here -->
+          <h1>Discover all Morocco’s best place.</h1>
+      </div>
+      <div class="col-12 col-md-7">
+          <div class="nav-link text-right m-3 ">
+              <h4>Already have an account? <a (click)="goToLogin()">Login</a> </h4>
+          </div>
+          <!-- Login Tab Content -->
+              <div class="row align-items-center justify-content-center" id="sign-form">
+                  <!-- <div class="col-md-7 col-lg-6"> -->
+                      <!-- Register Form -->
+                      <h1 class="col-12 " >Create account</h1>
+                      <form [formGroup]="userForm" (ngSubmit)="onSuivent()" *ngIf="!suiventStatus" >
+                          <div class="row">
+                              <div class="form-group col-12 col-md-6">
+                              <label for="firstName"> First name</label>
+                              <input type="text" class="form-control" name="firstName" formControlName="firstName" >
+                              </div>
+
+                              <div class="form-group col-12 col-md-6">
+                                  <label for="lastName"> Last name</label>
+                                  <input type="text" class="form-control" name="lastName" formControlName="lastName" >
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group col-12 col-md-6">
+                            <label for="cin">CIN</label>
+                            <input type="text" class="form-control" name="cin" formControlName="cin" >
+                            </div>
+
+                            <div class="form-group col-12 col-md-6">
+                                <label for="license"> License</label>
+                                <input type="text" class="form-control" name="license" formControlName="license" >
+                            </div>
+                        </div>
+
+                          <div class="form-group">
+                            <label for="username"> Email</label>
+                            <input type="text" class="form-control" name="username" formControlName="username" >
+                          </div>
+                          <div class="row">
+                              <div class="form-group col-12 col-md-6">
+                                  <label for="password">Password</label>
+                                  <input type="password" id="password" class="form-control" name="password" formControlName="password">
+                              </div>
+                              <div class="form-group col-12 col-md-6">
+                                  <label for="confirm">Confirm</label>
+                                  <input type="password" id="confirm" class="form-control" name="confirm" >
+                              </div>
+                          </div>
+
+                          <button type="submit" class="formControlName btn"
+                                  [disabled]="userForm.invalid">Suivent-></button>
+                      </form>
+                      <form [formGroup]="carForm" (ngSubmit)="onSubmit()" *ngIf="suiventStatus" >
+                        <div class="row mx-md-5">
+                          <div class="form-group col-12">
+                            <label for="owner">Owner name</label>
+                            <input type="text" name="owner" id="owner" class="form-control" formControlName="owner" >
+                          </div>
+                          <div class="form-group col-12">
+                            <label for="registrationNum">Registration Number</label>
+                            <input type="text" name="registrationNum" id="registrationNum" class="form-control" formControlName="registrationNum" >
+                          </div>
+                         
+                          <div class="form-group col-12 ">
+                              <label for="model">Model</label>
+                              <input type="text" name="model" id="model" class="form-control" formControlName="model" >
+                          </div>
+                          
+                          <div class="form-group col-12 ">
+                            <label for="seatsNum">Seats number</label>
+                            <input type="text" name="" id="seatsNum" class="form-control" formControlName="seatsNum" >
+                          </div>
+                        </div> 
+
+                          <button type="submit" class="formControlName btn" id="btn-car"
+                                  [disabled]="carForm.invalid">Create account</button>
+
+                      </form>
+                      <p class="text-danger">{{ errorMessage }}</p>
+                      <div class="alert alert-success" *ngIf="isSuccessful">
+                          Your registration is successful!
+                        </div>
+                  <!-- </div> -->
+              </div>
+      </div>
+  </div>
+
+</div>
+<!-- <div class="content ">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 offset-md-2">
 
-                <!-- Login Tab Content -->
+
                 <div class="account-content">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-7 col-lg-6">
-                            <!-- Register Form -->
+
                             <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
                                 <div class="form-group">
                                   <label for="firstName"> FirstName</label>
@@ -27,25 +121,21 @@
                                   <input type="text" name="cin" id="cin" class="form-control" formControlName="cin" >
                                 </div>
                                 <div class="form-group">
-                                  <label for="owner">Owner</label>
+                                  <label for="owner">Owner name</label>
                                   <input type="text" name="owner" id="owner" class="form-control" formControlName="owner" >
+                                </div>
+                                <div class="form-group">
+                                  <label for="registrationNum">Registration Number</label>
+                                  <input type="text" name="registrationNum" id="registrationNum" class="form-control" formControlName="registrationNum" >
                                 </div>
                                 <div class="form-group">
                                     <label for="model">Model</label>
                                     <input type="text" name="model" id="model" class="form-control" formControlName="model" >
                                 </div>
-                                <div class="form-group">
-                                  <label for="registrationNum">Registration N°</label>
-                                  <input type="text" name="registrationNum" id="registrationNum" class="form-control" formControlName="registrationNum" >
-                                </div>
+                                
                                 <div class="form-group">
                                   <label for="seatsNum">Seats number</label>
                                   <input type="text" name="" id="seatsNum" class="form-control" formControlName="seatsNum" >
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="username"> username</label>
-                                    <input type="text" class="form-control" name="username" formControlName="username" >
                                 </div>
                                 <div class="form-group">
                                     <label for="email"> email</label>
@@ -73,4 +163,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
