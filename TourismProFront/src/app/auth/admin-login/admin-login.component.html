@@ -1,35 +1,34 @@
-<div class="content ">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
 
-        <!-- Login Tab Content -->
-        <div class="account-content">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-md-7 col-lg-6">
-              <!-- Register Form -->
-              <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
-                <div class="form-group">
-                  <label for="username"> username</label>
-                  <input type="text" class="form-control" name="username" formControlName="username" >
-                </div>
-
-                <div class="form-group">
-                  <label for="password">password</label>
-                  <input type="password" id="password" class="form-control" name="password" formControlName="password">
-                </div>
-
-                <div class="text-right">
-                  <a (click)="onSignup()">Create new account?</a>
-                </div>
-                <button type="submit" class="btn formControlName btn-primary login-btn"
-                        [disabled]="userForm.invalid">Signin</button>
-              </form>
-              <p class="text-danger">{{ errorMessage }}</p>
-            </div>
-          </div>
-        </div>
+ <div class="container-fluid">
+  <div class="row">
+      <div class="d-none d-md-block col-md-5" id="sideimage">
+          <!-- image here -->
+          <h1>Discover all Morocco’s best place.</h1>
       </div>
-    </div>
+      <div class="col-12 col-md-7">
+          <div class="nav-link text-right m-3 ">
+              <h4>Not a member? <a (click)="onSignup()">Sign up</a> </h4>
+          </div>
+          <!-- Login Tab Content -->
+              <div class="row align-items-center justify-content-center" id="sign-form">
+                      <!-- Register Form -->
+                      <h1 class="col-12 " >Sign in to TourismPro</h1>
+                      <form  [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+                     
+                          <div class="form-group">
+                              <label for="username"> Email</label>
+                              <input type="text" class="form-control" name="username" formControlName="username" >
+                          </div>
+                          
+                          <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" id="password" class="form-control" name="password" formControlName="password">
+                          </div>
+                          <button type="submit" class="btn formControlName btn-primary"
+                                  [disabled]="userForm.invalid">Sign in</button>
+                      </form>
+                      <p class="text-danger">{{ errorMessage }}</p>
+              </div>
+      </div>
   </div>
 </div>

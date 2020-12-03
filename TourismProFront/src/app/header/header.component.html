@@ -35,7 +35,10 @@
                 <a class="nav-link" routerLink="#">About us</a>
             </li>
         </ul>
-        <ul class="navbar-nav justify-content-end">    
+        <ul class="navbar-nav justify-content-end">
+            <li class="nav-item" id="signin" routerLinkActive="active" class="justify-content-end"  *ngIf="!isLoggedIn">
+                <a class="nav-link"  routerLink="guide/login">I'm Tour Guide</a>
+            </li>    
             <li class="nav-item" id="signin" routerLinkActive="active" class="justify-content-end"  *ngIf="!isLoggedIn">
                 <a class="nav-link"  routerLink="user/login">Sign in</a>
             </li>

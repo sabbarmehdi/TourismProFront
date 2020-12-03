@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Admin } from '../models/users/admin';
+import { NavigationStart, Router } from '@angular/router';
 import { User } from '../models/users/user';
 import { AuthService } from '../services/user-services/auth.service';
 import { TokenStorageService } from '../services/user-services/jwt-services/token-storage.service';
@@ -26,7 +25,19 @@ export class HeaderComponent implements OnInit {
 
   constructor(private tokenStorage: TokenStorageService,
               private authService: AuthService,
-              private router: Router) { }
+              private router: Router) {
+               /*  this.router.events.subscribe((event: any) => {
+                  if (event instanceof NavigationStart) {
+                    if (event['url'] == 'user/login'|| 'user/signup'|| 'guide/login' || 'guide/singup') {
+                      this.showHeader = false;
+                    } else {
+                      // console.log("NU")
+                      this.showHeader = true;
+                    }
+                }
+              }); */
+                
+              }
 
   ngOnInit() {
    

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { TourGuide } from 'src/app/models/users/tour-guide';
 import { AuthService } from 'src/app/services/user-services/auth.service';
+import { MustMatch } from 'src/app/_helpers/must-match.validator';
 
 @Component({
   selector: 'app-guide-signup',
@@ -51,10 +52,14 @@ export class GuideSignupComponent implements OnInit {
       firstName:[null, [Validators.required]],
       lastName:[null, [Validators.required]],
       username:[null, [Validators.required, Validators.email]],
-      password:[null, [Validators.required, Validators.pattern]],
       cin: [null, [Validators.required]],
-      license: [null, [Validators.required]]
+      license: [null, [Validators.required]],
+      password:['', [Validators.required, Validators.minLength(8), Validators.pattern]],
+      confirmPassword:['', Validators.required]
+    },{
+      validator: MustMatch('password', 'confirmPassword')
     });
+    
     this.carForm = this.formBuilder.group({
       owner: [null, [Validators.required]],
       model: [null, [Validators.required]],

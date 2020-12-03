@@ -3,6 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Tourist } from 'src/app/models/users/tourist';
 import { AuthService } from 'src/app/services/user-services/auth.service';
+import { MustMatch } from 'src/app/_helpers/must-match.validator';
+
+
 
 @Component({
   selector: 'app-tourist-signup',
@@ -34,8 +37,12 @@ export class TouristSignupComponent implements OnInit {
       firstName:[null, [Validators.required]],
       lastName:[null, [Validators.required]],
       username:[null, [Validators.required, Validators.email]],
-      password:['', Validators.required]
-    });
+      password:['', [Validators.required, Validators.minLength(8), Validators.pattern]],
+      confirmPassword:['', Validators.required]
+    },{
+      validator: MustMatch('password', 'confirmPassword')
+    }
+    );
   }
 
   onSubmit():void{
