@@ -8,7 +8,7 @@
                     <h4 class="card-title">{{ trip.tripName }}</h4>
                     <!-- <p class="card-text">{{ trip.description }}</p>
                         <p class="card-text">{{ trip.trajectory.distance }}</p> -->
-                    <p class="card-subtitle">{{ trip.trajectory.cities }}</p>
+                    <p class="card-subtitle">{{ trip.description }}</p>
                     <p class="card-text">{{ trip.trajectory.trajectoryTime | date: "shortTime" }}</p>
                     <a class="btn btn-primary shadow-sm" (click)="onViewTrip(trip.id)">more details</a> <!-- stretched-link  -->
                     <button class="btn btn-danger ml-2" (click)="onDeleteTrip(trip.id)">Delete</button>

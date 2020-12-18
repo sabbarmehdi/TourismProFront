@@ -14,7 +14,9 @@
                   <!-- <div class="col-md-7 col-lg-6"> -->
                       <!-- Register Form -->
                       <h1 class="col-12 " >Create account</h1>
+                        <!-- Personal Details Form -->
                       <form [formGroup]="userForm" (ngSubmit)="onSuivent()" *ngIf="!suiventStatus" >
+                        <h3 class="text-center" ><span>Personal Details • </span><span id="disable-text" >• Car Details</span></h3 >
                           <div class="row">
                               <div class="form-group col-12 col-md-6">
                               <label for="firstName"> First name</label>
@@ -56,7 +58,10 @@
                           <button type="submit" class="formControlName btn"
                                   [disabled]="userForm.invalid">Suivent-></button>
                       </form>
-                      <form [formGroup]="carForm" (ngSubmit)="onSubmit()" *ngIf="suiventStatus" >
+                            <!-- Car details form -->
+                      <form class="w-75" [formGroup]="carForm" (ngSubmit)="onSubmit()" *ngIf="suiventStatus" >
+                        <h3  class="text-center" ><span id="disable-text" >Personal Details • </span><span>• Car Details</span></h3>
+
                         <div class="row mx-md-5">
                           <div class="form-group col-12">
                             <label for="owner">Owner name</label>
@@ -74,14 +79,14 @@
                           
                           <div class="form-group col-12 ">
                             <label for="seatsNum">Seats number</label>
-                            <input type="text" name="" id="seatsNum" class="form-control" formControlName="seatsNum" >
+                            <input type="text" name="seatsNum" id="seatsNum" class="form-control" formControlName="seatsNum" >
                           </div>
                         </div> 
-
                           <button type="submit" class="formControlName btn" id="btn-car"
                                   [disabled]="carForm.invalid">Create account</button>
-
+                          <button class="btn" id="back-btn" (click)="goBack()" *ngIf="suiventStatus"> Go back</button>
                       </form>
+
                       <p class="text-danger">{{ errorMessage }}</p>
                       <div class="alert alert-success" *ngIf="isSuccessful">
                           Your registration is successful!
@@ -92,75 +97,3 @@
   </div>
 
 </div>
-<!-- <div class="content ">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-
-
-                <div class="account-content">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-md-7 col-lg-6">
-
-                            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
-                                <div class="form-group">
-                                  <label for="firstName"> FirstName</label>
-                                  <input type="text" class="form-control" name="firstName" formControlName="firstName" >
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="lastName"> lastName</label>
-                                    <input type="text" class="form-control" name="lastName" formControlName="lastName" >
-                                </div>
-                                <div class="form-group">
-                                  <label for="license">License</label>
-                                  <input type="text" name="license" id="license" class="form-control" formControlName="license" >
-                                </div>
-                                <div class="form-group">
-                                  <label for="cin">CIN</label>
-                                  <input type="text" name="cin" id="cin" class="form-control" formControlName="cin" >
-                                </div>
-                                <div class="form-group">
-                                  <label for="owner">Owner name</label>
-                                  <input type="text" name="owner" id="owner" class="form-control" formControlName="owner" >
-                                </div>
-                                <div class="form-group">
-                                  <label for="registrationNum">Registration Number</label>
-                                  <input type="text" name="registrationNum" id="registrationNum" class="form-control" formControlName="registrationNum" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="model">Model</label>
-                                    <input type="text" name="model" id="model" class="form-control" formControlName="model" >
-                                </div>
-                                
-                                <div class="form-group">
-                                  <label for="seatsNum">Seats number</label>
-                                  <input type="text" name="" id="seatsNum" class="form-control" formControlName="seatsNum" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="email"> email</label>
-                                    <input type="text" class="form-control" name="email" formControlName="email" >
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="password">password</label>
-                                  <input type="password" class="form-control" name="password" formControlName="password">
-                                </div>
-
-                                <div class="text-right">
-                                    <a (click)="goToLogin()">Already have an account?</a>
-                                </div>
-                                <button type="submit" class="btn formControlName btn-primary login-btn"
-                                        [disabled]="userForm.invalid">Signup</button>
-                            </form>
-                            <p class="text-danger">{{ errorMessage }}</p>
-                            <div class="alert alert-success" *ngIf="isSuccessful">
-                                Your registration is successful!
-                              </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->

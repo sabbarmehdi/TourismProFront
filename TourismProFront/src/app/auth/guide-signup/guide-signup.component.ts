@@ -1,3 +1,4 @@
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,13 +14,8 @@ import { MustMatch } from 'src/app/_helpers/must-match.validator';
 })
 export class GuideSignupComponent implements OnInit {
 
-    firstName : string;
-    lastName: string;
-    username: string;
-    email: string;
-    password: string;
-    cin: string;
-    license: string;
+    userInfoForm: any;
+
   userForm = new FormGroup({
       firstName: new FormControl(),
       lastName: new FormControl(),
@@ -69,28 +65,36 @@ export class GuideSignupComponent implements OnInit {
   }
 
   onSuivent():void{
-    this.firstName = this.userForm.get('firstName').value;
-    this.lastName = this.userForm.get('lastName').value;
-    this.username = this.userForm.get('username').value;
-    this.password = this.userForm.get('password').value;
-    this.cin = this.userForm.get('cin').value;
-    this.license = this.userForm.get("license").value;
-    this.suiventStatus = true; 
+    const firstName = this.userForm.get('firstName').value;
+    const lastName = this.userForm.get('lastName').value;
+    const username = this.userForm.get('username').value;
+    const password = this.userForm.get('password').value;
+    const cin = this.userForm.get('cin').value;
+    const license = this.userForm.get("license").value;
+  
+    this.userInfoForm = {firstName, lastName, username, password, cin, license};
+    console.log(JSON.stringify(this.userInfoForm));
+    
+    this.suiventStatus = true;
   }
   
   onSubmit():void{
-    const owner = this.userForm.get("owner").value;
-    const model = this.userForm.get("model").value;
-    const seatsNum = this.userForm.get("seatsNum").value;
-    const registrationNum = this.userForm.get("registrationNum").value;
+    const firstName = this.userInfoForm.firstName;
+    const lastName = this.userInfoForm.lastName;
+    const username = this.userInfoForm.username;
+    const password = this.userInfoForm.password;
+    const cin = this.userInfoForm.cin;
+    const license = this.userInfoForm.license;
 
-   /*  console.log(JSON.stringify(owner));
-    console.log(JSON.stringify(model));
-    console.log(JSON.stringify(seatsNum)); */
-
+    const owner = this.carForm.get("owner").value;
+    const model = this.carForm.get("model").value;
+    const seatsNum = this.carForm.get("seatsNum").value;
+    const registrationNum = this.carForm.get("registrationNum").value;
+    
     const newCar = new Car( model, owner, seatsNum, registrationNum);
+
     console.log(JSON.stringify(newCar));
-    const newUser = new TourGuide(this.firstName,this.lastName, this.username, this.password, this.cin, this.license, newCar);
+    const newUser = new TourGuide(firstName,lastName, username, password, cin, license, newCar);
 
 
     this.authService.registerGuide(newUser).subscribe(
@@ -112,5 +116,8 @@ export class GuideSignupComponent implements OnInit {
     this.router.navigate(['/guide/login']);
   }
 
+  goBack(){
+    this.suiventStatus = false;
+  }
 
 }

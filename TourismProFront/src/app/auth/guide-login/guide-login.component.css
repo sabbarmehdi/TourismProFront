@@ -22,6 +22,7 @@ label {
 #sign-form{
     align-self: center;
     margin-top: 100px;
+    padding: 0% 10%;
 }
 
 #sideimage h1 {
@@ -35,4 +36,8 @@ align-self: center;
 #sign-form h1 {
     padding: 0% 0% 5% 15%;
     font-size: 30px;
+}
+#sign-form button{
+    max-width: 25%;
+    align-self: baseline;
 }

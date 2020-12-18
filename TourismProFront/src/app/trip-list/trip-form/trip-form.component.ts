@@ -23,10 +23,11 @@ export class TripFormComponent implements OnInit {
     description: '',
     trajectory: {
       id: null,
-      cities: '',
       distance: '',
       trajectoryTime: new Date()
     },
+    tripPeriod: null,
+    startingCity: '',
     clientId: null
   }
 
@@ -36,7 +37,7 @@ export class TripFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.trip.clientId =  this.tokenStorage.getUser().id;
-        
+
        // console.log("trip-form test: " + JSON.stringify(this.tourist));
   }
 

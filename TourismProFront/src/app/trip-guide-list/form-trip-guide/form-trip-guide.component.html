@@ -1,39 +1,78 @@
-<div class="new-trip container-fluid">
-    <h3>Create new trip</h3>
-    <div style="width: 400px;">
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-9">
+            <h1>New trip:</h1>
+        </div>
+        <div class="col-3 ">
+            <button type="submit" class="button btn btn-warning mr-4 ml-5 ">Draft</button>
+            <button type="submit" class="button btn btn-success">Publish</button>    
+        </div>
+        
+    </div>
+    <hr class="solid">
+    <div>
         <form (ngSubmit)="onSaveTripg()">
-            <div class="form-group">
-                <label for="tripName">Trip name</label>
-                <input type="text" id="tripName" name="tripName" class="form-control"
-                required [(ngModel)]='trip.tripName'  >
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="tripName">Trip name</label>
+                        <input type="text" id="tripName" name="tripName" class="form-control"
+                        required [(ngModel)]='trip.tripName'  >
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12 col-md-6">
+                            <label for="tripPeriod">Period (by days)</label>
+                            <input type="text" name="tripPeriod" class="form-control"
+                            required [(ngModel)]='trip.tripPeriod' >
+                        </div>
+
+                        <div class="form-group col-12 col-md-6">
+                            <label for="startingCity">Starting city</label>
+                            <input type="text" id="startingCity" name="startingCity" class="form-control"
+                            required [(ngModel)]='trip.startingCity' >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12 col-md-6">
+                            <label for="distance">Trip length</label>
+                            <input type="text" id="distance" name="distance" class="form-control"
+                            required [(ngModel)]='trip.trajectory.distance' >
+                        </div>
+
+                        <div class="form-group col-12 col-md-6">
+                            <label for="tripPeriod">Duration of road</label>
+                            <input type="text" id="tripPeriod" name="tripPeriod" class="form-control"
+                            required [(ngModel)]='trip.tripPeriod' >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12 col-md-6">
+                            <label for="price">Price</label>
+                            <input type="text" id="price" name="price" class="form-control"
+                            required [(ngModel)]='trip.price' >
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <mat-form-field color="accent"  appearance="fill" MatFormFieldControl>
+                            <mat-label>Trip date</mat-label>
+                            <input required [(ngModel)]='trip.trajectory.trajectoryTime' name="trajectoryTime" [matDatepicker]="picker1">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-7" style="background-color: #d4a3fb;">
+                    <button type="button" class="btn btn-primary">Upload image</button>
+                </div>
+                <div class="form-group col-12">
+                    <label for="description">Description</label>
+                    <textarea name="description" class="form-control" rows="5"
+                    required [(ngModel)]='trip.description' ></textarea>
+                </div>
+                
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <input type="text" name="description" class="form-control"
-                required [(ngModel)]='trip.description' >
-            </div>
-            <div class="form-group">
-                <label for="cities">Cities</label>
-                <input class="form-control" name="cities"
-                required [(ngModel)]='trip.trajectory.cities' >
-            </div>
-             <div class="form-group">
-                <label for="distance">Distance length</label>
-                <input type="text" id="distance" name="distance" class="form-control"
-                required [(ngModel)]='trip.trajectory.distance' >
-            </div>
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="text" id="price" name="price" class="form-control"
-                required [(ngModel)]='trip.price' >
-            </div>
-            <mat-form-field color="accent"  appearance="fill" MatFormFieldControl>
-                <mat-label>Trip date</mat-label>
-                <input required [(ngModel)]='trip.trajectory.trajectoryTime' name="trajectoryTime" [matDatepicker]="picker1">
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-              </mat-form-field>
-            <button type="submit" class="button btn btn-success">Save</button>
         </form>
     </div>
+    
 </div>

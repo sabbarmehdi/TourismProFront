@@ -39,6 +39,10 @@ align-self: center;
 
 #btn-car{
     margin-right: 5em;
+    float: right;
+}
+#back-btn{
+    margin-left: 11.5%;
 }
 .btn{
     background-color: #FFB75F;
@@ -47,11 +51,13 @@ align-self: center;
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 	color: rgb(29, 28, 28);
 	font-size: 14px;
-	padding: 6px 10px;
+	padding: 6px 6px;
 	bottom: 16px;
 	right: 30px;
 	letter-spacing: 1px;
 	width: 30%;
-    float: right;
-  
+}
+
+#disable-text{
+    opacity: 50%;
 }

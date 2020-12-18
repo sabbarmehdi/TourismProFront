@@ -6,6 +6,8 @@ export abstract class Trip {
     tripName: String;
     description: String;
     trajectory: Trajectory;
+    tripPeriod: number;
+    startingCity: String;
     clientId: String;
 
     /* constructor(tripName: String, description: String, trajectory: Trajectory){

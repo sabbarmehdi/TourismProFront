@@ -18,13 +18,14 @@ export class FormTripGuideComponent implements OnInit {
     description: '',
     trajectory: {
       id: null,
-      cities: '',
       distance: '',
       trajectoryTime: new Date()
     },
+    tripPeriod: null,
+    startingCity: '',
+    clientId: null,
     price: null,
-    tripeDate: new Date(),
-    clientId: null
+    tripeDate: new Date()
   }
 
   constructor(private tripService: TripsService,

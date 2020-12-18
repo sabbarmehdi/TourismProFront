@@ -5,15 +5,15 @@
           <!-- image here -->
           <h1>Discover all Morocco’s best place.</h1>
       </div>
-      <div class="col-12 col-md-7">
-          <div class="nav-link text-right m-3 ">
+      <div class="col-12 col-md-7 ">
+          <div class="nav-link text-right ">
               <h4>Not a member? <a (click)="onSignup()">Sign up</a> </h4>
           </div>
           <!-- Login Tab Content -->
               <div class="row align-items-center justify-content-center" id="sign-form">
                       <!-- Register Form -->
                       <h1 class="col-12 " >Sign in to TourismPro</h1>
-                      <form  [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+                      <form class="w-75" [formGroup]="userForm" (ngSubmit)="onSubmit()" >
                      
                           <div class="form-group">
                               <label for="username"> Email</label>
