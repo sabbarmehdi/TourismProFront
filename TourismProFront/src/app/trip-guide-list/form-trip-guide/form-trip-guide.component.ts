@@ -46,6 +46,8 @@ export class FormTripGuideComponent implements OnInit {
       },
       error => console.log(error));
   }
+  //TODO: impliment this method to save trip as Draft
+  onSaveDraft(){}
 
   backToList() {
     this.router.navigate(['/trips','guide'])

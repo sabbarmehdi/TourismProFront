@@ -4,14 +4,17 @@
             <h1>New trip:</h1>
         </div>
         <div class="col-3 ">
-            <button type="submit" class="button btn btn-warning mr-4 ml-5 ">Draft</button>
-            <button type="submit" class="button btn btn-success">Publish</button>    
+            <button type="submit" class="button btn btn-warning mr-4 ml-5"
+                    (Click)="onSaveDraft()">Draft</button>
+            <button type="submit" class="button btn btn-success"
+                    form="signup-guide"
+                    (Click)="onSaveTripg()">Publish</button>    
         </div>
         
     </div>
     <hr class="solid">
     <div>
-        <form (ngSubmit)="onSaveTripg()">
+        <form id="signup-guide" (ngSubmit)="onSaveTripg()">
             <div class="row">
                 <div class="col-5">
                     <div class="form-group">
